@@ -5,20 +5,13 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Profile</div>
-  </div>
-
-  <div class="mb-10 text-justify">
-    I am Daniel Fain.
-  </div>
-
-  <div class="mb-5">
     <div class="text-3xl w-full font-bold">Education</div>
   </div>
 
-  <div class="time-line-container grid gap-4 mb-10">
+  <div class="time-line-container grid gap-4">
     <TimeLineElement
       title="University of Georgia"
+      dates="Jan 2020 - Dec 2022"
       subtitle="B.S. Computer Science"
     />
   </div>
@@ -29,21 +22,48 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 
   <div class="time-line-container mb-10">
     <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
+      title="Software Developer"
+      subtitle="ADP"
+      dates="Feb 2023 - Present"
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
     </TimeLineElement>
     <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
+      title="Software Developer Intern"
+      subtitle="ADP"
+      dates="May 2022 - Aug 2022"
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+      <p>
+        • Created an iOS document scanner app for the Document Cloud team to
+        address the growing number of remote and distributed users who can’t
+        upload required documents
+      </p>
+      <p>
+        • Enabled users to use their phone’s camera to scan documents, create PDF
+        files from these scans, and upload their created PDF files
+      </p>
+      <p>
+        • Some other notable features of the app were automatic document border
+        detection, cropping and editing, PDF compression, and local file
+        management
+      </p>
     </TimeLineElement>
     <TimeLineElement
       title="Software Engineer Intern"
-      subtitle="From May 2021 to Aug 2021 at American Express"
+      subtitle="American Express"
+      dates="May 2021 - Aug 2021"
     >
+      <p>
+        • Designed and developed asynchronous APIs using Java and Vert.x for a
+        new internal administration portal within the chaos engineering platform
+      </p>
+      <p>
+        • Created a component with React for the aforementioned administration
+        portal that streamlines an asset onboarding process
+      </p>
+      <p>
+        • Took part in platform design discussions and applied best practices of
+        software architecture to code design
+      </p>
     </TimeLineElement>
   </div>
 
