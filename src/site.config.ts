@@ -5,7 +5,7 @@ export const site = {
   role: 'Software developer',
   description: 'Daniel’s personal site. Software projects, things I’m learning, and notes along the way.',
   introduction: 'I’m a software developer. This is where I share my projects and write about what I’m learning.',
-  email: 'hello@example.com',
+  email: 'daniel@fain.dev',
   socialLinks: [{ label: 'GitHub', url: 'https://github.com/danielfain' },
   { label: 'LinkedIn', url: 'https://www.linkedin.com/in/danieljfain/' }] as { label: string; url: string }[],
   showExampleNotice: true,
