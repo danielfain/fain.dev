@@ -1,0 +1,57 @@
+---
+interface Props { variant: 'notes' | 'relay' | 'search'; }
+const { variant } = Astro.props;
+---
+<div class:list={['project-art', `art-${variant}`]} aria-hidden="true">
+  {variant === 'notes' && <svg viewBox="0 0 620 370" fill="none">
+    <path class="art-grid" d="M0 74h620M0 148h620M0 222h620M0 296h620M124 0v370M248 0v370M372 0v370M496 0v370" />
+    <rect x="144" y="69" width="344" height="250" rx="5" fill="light-dark(#d6b79d, #473a2e)" transform="rotate(6 144 69)" />
+    <rect x="117" y="48" width="366" height="267" rx="5" fill="light-dark(#fffcf5, #272822)" stroke="light-dark(#ccad94, #77614c)" />
+    <path d="M117 87h366M206 87v228" stroke="light-dark(#e4d9ca, #4c4639)" />
+    <circle cx="134" cy="68" r="3" fill="light-dark(#b25c3d, #d49b78)" /><circle cx="146" cy="68" r="3" fill="light-dark(#d4c3b1, #4c4639)" /><circle cx="158" cy="68" r="3" fill="light-dark(#d4c3b1, #4c4639)" />
+    <text x="301" y="72" text-anchor="middle" fill="light-dark(#73634f, #bfb098)" font-size="10" font-family="monospace">fieldnotes / notebook</text>
+    <rect x="130" y="108" width="63" height="20" rx="3" fill="light-dark(#f1e5d8, #3c362a)" />
+    <path d="M140 118h42M140 151h30M140 180h38M140 209h28" stroke="light-dark(#a68e77, #77614c)" stroke-width="3" stroke-linecap="round" />
+    <text x="233" y="126" fill="light-dark(#a05c40, #d49b78)" font-size="9" font-family="monospace">A PLACE FOR SMALL IDEAS</text>
+    <text x="233" y="163" fill="light-dark(#433c32, #e5ddc8)" font-size="27" font-family="Georgia, serif">Make room to think.</text>
+    <path d="M234 187h214M234 199h192M234 211h206" stroke="light-dark(#d5cbbd, #4c4639)" stroke-width="4" stroke-linecap="round" />
+    <rect x="233" y="237" width="105" height="49" rx="3" fill="light-dark(#efe7da, #3c362a)" />
+    <path d="m250 271 19-18 19 9 17-12 17 19" stroke="light-dark(#ac856b, #77614c)" stroke-width="1.5" />
+    <path d="M354 247h88M354 260h68M354 273h77" stroke="light-dark(#d5cbbd, #4c4639)" stroke-width="4" stroke-linecap="round" />
+    <path d="m510 267 6 13 14 2-10 10 2 14-12-7-13 7 3-14-11-10 15-2z" fill="light-dark(#ad6546, #d49b78)" />
+  </svg>}
+  {variant === 'relay' && <svg viewBox="0 0 620 370" fill="none">
+    <circle cx="310" cy="185" r="142" stroke="light-dark(#bac9bd, #4d6652)" stroke-dasharray="3 6" /><circle cx="310" cy="185" r="99" stroke="light-dark(#c5d2c7, #4d6652)" />
+    <path d="M117 185h386M310 64v241" stroke="light-dark(#a8b9ad, #4d6652)" stroke-dasharray="4 5" />
+    <path d="M168 185h103M349 185h102M310 106v42M310 222v42" stroke="light-dark(#527660, #95b99c)" stroke-width="2" />
+    <rect x="268" y="143" width="84" height="84" rx="20" fill="#476b54" />
+    <path d="m291 186 15-15-5 15h27l-16 15 5-15" stroke="light-dark(#f4f5ed, #e3eddb)" stroke-width="3" stroke-linejoin="round" />
+    <rect x="76" y="152" width="106" height="66" rx="8" fill="light-dark(#f7f8f1, #253329)" stroke="light-dark(#a9bbad, #4d6652)" />
+    <text x="129" y="179" text-anchor="middle" fill="light-dark(#45644f, #c6d8c4)" font-size="11" font-family="monospace">event.created</text>
+    <circle cx="104" cy="198" r="3" fill="light-dark(#71967c, #95b99c)" /><path d="M114 198h40" stroke="light-dark(#bac9bd, #4d6652)" stroke-width="3" stroke-linecap="round" />
+    <rect x="438" y="152" width="106" height="66" rx="8" fill="light-dark(#f7f8f1, #253329)" stroke="light-dark(#a9bbad, #4d6652)" />
+    <text x="491" y="179" text-anchor="middle" fill="light-dark(#45644f, #c6d8c4)" font-size="11" font-family="monospace">delivered</text>
+    <path d="m478 195 6 6 12-12" stroke="light-dark(#71967c, #95b99c)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    <rect x="272" y="62" width="76" height="40" rx="6" fill="light-dark(#f7f8f1, #253329)" stroke="light-dark(#a9bbad, #4d6652)" />
+    <text x="310" y="87" text-anchor="middle" fill="light-dark(#45644f, #c6d8c4)" font-size="11" font-family="monospace">retry</text>
+    <rect x="272" y="268" width="76" height="40" rx="6" fill="light-dark(#f7f8f1, #253329)" stroke="light-dark(#a9bbad, #4d6652)" />
+    <text x="310" y="293" text-anchor="middle" fill="light-dark(#45644f, #c6d8c4)" font-size="11" font-family="monospace">observe</text>
+    <circle cx="221" cy="185" r="5" fill="light-dark(#527660, #95b99c)" /><circle cx="400" cy="185" r="5" fill="light-dark(#527660, #95b99c)" />
+    <text x="310" y="344" text-anchor="middle" fill="light-dark(#6a8372, #95b99c)" font-size="9" letter-spacing="2" font-family="monospace">SMALL EVENTS. RELIABLE CONNECTIONS.</text>
+  </svg>}
+  {variant === 'search' && <svg viewBox="0 0 620 370" fill="none">
+    <circle cx="470" cy="78" r="91" stroke="light-dark(#bdc6d2, #4b5c71)" /><circle cx="470" cy="78" r="115" stroke="light-dark(#cad2dc, #4b5c71)" />
+    <rect x="123" y="64" width="374" height="251" rx="8" fill="light-dark(#f9fafb, #252c37)" stroke="light-dark(#b4c0cf, #4b5c71)" />
+    <rect x="143" y="85" width="334" height="46" rx="5" fill="light-dark(#eef1f5, #313d4f)" stroke="light-dark(#cbd3de, #4b5c71)" />
+    <circle cx="162" cy="105" r="6" stroke="light-dark(#62748f, #9aabc4)" stroke-width="1.5" /><path d="m167 110 5 5" stroke="light-dark(#62748f, #9aabc4)" stroke-width="1.5" />
+    <text x="188" y="112" fill="light-dark(#3d506c, #c1cee0)" font-size="13" font-family="monospace">something worth finding</text>
+    <path d="M145 159h57" stroke="light-dark(#8091a8, #9aabc4)" stroke-width="3" stroke-linecap="round" />
+    <rect x="143" y="177" width="334" height="50" rx="3" fill="light-dark(#e5eaf2, #313d4f)" />
+    <text x="159" y="197" fill="light-dark(#3d506c, #c1cee0)" font-size="12" font-family="monospace">01 / A smaller search engine</text>
+    <path d="M159 213h236" stroke="light-dark(#b3c0d1, #4b5c71)" stroke-width="3" stroke-linecap="round" />
+    <text x="159" y="251" fill="light-dark(#65758c, #c1cee0)" font-size="12" font-family="monospace">02 / Notes on indexing</text>
+    <path d="M159 269h204" stroke="light-dark(#c4cdd9, #4b5c71)" stroke-width="3" stroke-linecap="round" />
+    <text x="459" y="297" text-anchor="end" fill="light-dark(#8694a6, #9aabc4)" font-size="9" font-family="monospace">a little less noise.</text>
+    <path d="M94 264v26M81 277h26" stroke="light-dark(#697f9d, #9aabc4)" stroke-width="2" />
+  </svg>}
+</div>

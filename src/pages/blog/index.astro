@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostRow from '../../components/PostRow.astro';
+import { publishedPosts } from '../../lib/content';
+const posts = await publishedPosts();
+---
+<BaseLayout title="Blog" description="Notes on software development, thoughtful design, and learning by doing.">
+  <section class="page-intro"><h1>My <em>notebook.</em></h1><p>Things I’ve learned, questions I’m sitting with, and notes I want to come back to.</p></section>
+  <section class="collection-section" aria-label="All articles"><div class="post-list">{posts.length ? posts.map(post => <PostRow post={post} />) : <p class="empty-state">The notebook is open. First thoughts coming soon.</p>}</div></section>
+</BaseLayout>

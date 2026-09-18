@@ -1,0 +1,20 @@
+---
+import { withBase } from '../lib/url';
+import type { CollectionEntry } from 'astro:content';
+import Arrow from './Arrow.astro';
+import ProjectArtwork from './ProjectArtwork.astro';
+interface Props { project: CollectionEntry<'projects'>; }
+const { project } = Astro.props;
+const { data, id } = project;
+---
+<article class="project-card">
+  <a class="project-art-link" href={withBase(`/projects/${id}/`)} aria-label={`Explore ${data.title}`}>
+    <ProjectArtwork variant={data.artwork} />
+  </a>
+  <div class="project-copy">
+    <div class="project-meta"><span>{data.kind}</span><span>{data.year}</span></div>
+    <h3><a href={withBase(`/projects/${id}/`)}>{data.title}<Arrow diagonal /></a></h3>
+    <p>{data.summary}</p>
+    <div class="tags">{data.technologies.map(technology => <span>{technology}</span>)}{data.sample && <span class="sample-tag">Example project</span>}</div>
+  </div>
+</article>

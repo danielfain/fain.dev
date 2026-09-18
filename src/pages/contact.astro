@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Arrow from '../components/Arrow.astro';
+import { site } from '../site.config';
+---
+<BaseLayout title="Contact" description="Get in touch with Daniel by email, or find me on GitHub.">
+  <section class="contact-page" aria-labelledby="contact-title">
+    <header class="page-intro">
+      <h1 id="contact-title">Drop me <em>a note.</em></h1>
+      <p>A question about a post, something you’re building, or just a hello — I’d be happy to hear from you.</p>
+    </header>
+    <div class="contact-options">
+      <a class="contact-option" href={`mailto:${site.email}`}>
+        <span class="contact-option-label">Email me</span>
+        <span class="contact-option-value">{site.email}</span>
+        <Arrow diagonal />
+      </a>
+      {site.socialLinks.filter(link => link.url).map(link => <a class="contact-option" href={link.url}>
+        <span class="contact-option-label">Find me on</span>
+        <span class="contact-option-value">{link.label}</span>
+        <Arrow diagonal />
+      </a>)}
+    </div>
+    <p class="contact-signoff">Thanks for taking the time,<br /><span>{site.name}</span></p>
+  </section>
+</BaseLayout>

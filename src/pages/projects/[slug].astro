@@ -1,0 +1,24 @@
+---
+import { withBase } from '../../lib/url';
+import { render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Arrow from '../../components/Arrow.astro';
+import ProjectArtwork from '../../components/ProjectArtwork.astro';
+import { publishedProjects } from '../../lib/content';
+export async function getStaticPaths() {
+  return (await publishedProjects()).map(project => ({ params: { slug: project.id }, props: { project } }));
+}
+interface Props { project: CollectionEntry<'projects'>; }
+const { project } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+---
+<BaseLayout title={data.title} description={data.summary}>
+  <article class="project-detail">
+    <a class="text-link back-link" href={withBase('/projects/')}><Arrow />All projects</a>
+    <header class="project-detail-header"><div><p class="eyebrow">{data.kind} / {data.year}</p><h1>{data.title}<span class="accent">.</span></h1><p class="article-deck">{data.summary}</p></div><div class="project-facts"><span class="eyebrow">BUILT WITH</span><div class="tags">{data.technologies.map(technology => <span>{technology}</span>)}</div><div class="project-links">{data.repository && <a class="text-link" href={data.repository}>Source code <Arrow diagonal /></a>}{data.demo && <a class="text-link" href={data.demo}>Live demo <Arrow diagonal /></a>}</div></div></header>
+    <ProjectArtwork variant={data.artwork} />
+    <div class="project-body">{data.sample && <p class="content-notice">Example project · This is an illustrative case study, not a claim of completed work.</p>}<div class="prose"><Content /></div></div>
+    <div class="article-end"><span class="end-mark" aria-hidden="true">✳</span><a class="text-link" href={withBase('/projects/')}>Back to all projects <Arrow /></a></div>
+  </article>
+</BaseLayout>

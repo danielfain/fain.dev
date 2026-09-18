@@ -1,0 +1,90 @@
+---
+import { withBase } from '../lib/url';
+import '@fontsource-variable/dm-sans';
+import '@fontsource-variable/newsreader';
+import '@fontsource-variable/newsreader/wght-italic.css';
+import '../styles/global.css';
+import { site } from '../site.config';
+
+interface Props { title?: string; description?: string; article?: boolean; }
+const { title, description = site.description, article = false } = Astro.props;
+const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.role}`;
+const path = Astro.url.pathname;
+const canonical = new URL(path, Astro.site).href;
+const nav = [{ href: '/', label: 'Home' }, { href: '/blog/', label: 'Writing' }, { href: '/projects/', label: 'Projects' }, { href: '/contact/', label: 'Contact' }];
+---
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1d201d" />
+    <script is:inline>
+      (() => {
+        const key = 'fain.dev:theme';
+        const validPreference = value => value === 'dark' || value === 'light' ? value : null;
+        let preference = null;
+        try { preference = validPreference(localStorage.getItem(key)); } catch {}
+
+        const applyTheme = () => {
+          const theme = preference ?? 'dark';
+          document.documentElement.dataset.theme = theme;
+          document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#1d201d' : '#f7f5ef');
+          const button = document.querySelector('[data-theme-toggle]');
+          if (button) {
+            const label = `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`;
+            button.setAttribute('aria-label', label);
+            button.setAttribute('title', label);
+            button.hidden = false;
+          }
+        };
+
+        // Apply before the page paints to avoid a flash of the wrong theme.
+        applyTheme();
+        document.addEventListener('DOMContentLoaded', () => {
+          applyTheme();
+          document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
+            preference = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+            try { localStorage.setItem(key, preference); } catch {}
+            applyTheme();
+          });
+        }, { once: true });
+        window.addEventListener('storage', event => {
+          if (event.key === key || event.key === null) {
+            preference = validPreference(event.newValue);
+            applyTheme();
+          }
+        });
+      })();
+    </script>
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="site-header">
+        <a href={withBase('/')} class="wordmark" aria-label={`${site.fullName}, home`}><span>{site.fullName.toLowerCase()}<span class="wordmark-dot">.</span></span></a>
+        <nav aria-label="Main navigation">
+          {nav.map(item => <a href={withBase(item.href)} aria-current={(item.href === '/' ? path === withBase('/') : path.startsWith(withBase(item.href))) ? 'page' : undefined}>{item.label}</a>)}
+        </nav>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light mode" hidden>
+            <svg class="theme-icon-moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 13.1A9 9 0 0 1 10.9 3.2a9 9 0 1 0 9.9 9.9Z" /></svg>
+            <svg class="theme-icon-sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5" /></svg>
+        </button>
+      </header>
+      <main id="main" tabindex="-1"><slot /></main>
+      <footer class="site-footer">
+        {site.showExampleNotice && <aside class="example-notice">A work in progress — projects, posts, and contact details are examples for now.</aside>}
+        <div class="footer-bottom"><span>© {new Date().getFullYear()} {site.name}</span><span class="footer-note">Thanks for stopping by.</span><a href="#top" aria-label="Back to top">Back to top <span aria-hidden="true">↑</span></a></div>
+      </footer>
+    </div>
+  </body>
+</html>
