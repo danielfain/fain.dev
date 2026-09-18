@@ -6,6 +6,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import PostRow from '../components/PostRow.astro';
 import { publishedPosts, publishedProjects } from '../lib/content';
 import { site } from '../site.config';
+import ContactLinks from '../components/ContactLinks.astro';
 const projects = (await publishedProjects()).filter(project => project.data.featuredOrder !== undefined).slice(0, 3);
 const posts = (await publishedPosts()).slice(0, 3);
 ---
@@ -14,6 +15,7 @@ const posts = (await publishedPosts()).slice(0, 3);
     <div class="welcome-copy">
       <h1 id="welcome-title">Hi, I’m <em>{site.name}.</em></h1>
       <p class="welcome-intro">{site.introduction}</p>
+      <ContactLinks />
     </div>
   </section>
   <section class="section-block writing-section" aria-labelledby="writing-title">

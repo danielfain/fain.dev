@@ -117,4 +117,4 @@ SITE_URL=https://danielfain.github.io BASE_PATH=/fain.dev npm run build
 
 Custom domain configuration and DNS are separate from the repository name. Example content and contact details remain clearly marked until replaced.
 
-The navigation’s “Contact” link opens `/contact/`, with direct email and social links. All pages share a compact footer. No contact-form backend, CMS, analytics, or tracking is configured, and all writing stays in your Git repository.
+The homepage intro includes direct email and social links. All pages share a compact footer. No contact-form backend, CMS, analytics, or tracking is configured, and all writing stays in your Git repository.
