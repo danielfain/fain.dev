@@ -23,16 +23,17 @@ npm run preview   # Preview the production build
 
 ## Make it yours
 
-Edit `src/site.config.ts` to set your name, role, introduction, email, description, and social links. It currently uses **Daniel** and your GitHub profile. Replace the placeholder **hello@example.com** before launch.
+Edit `src/site.config.ts` to set your name, role, introduction, description, and links. It currently uses **Daniel** and your GitHub profile.
 
 ```ts
-socialLinks: [
+links: [
+  { label: 'Email', url: 'mailto:you@example.com', icon: 'mail' },
   { label: 'GitHub', url: 'https://github.com/your-handle', icon: 'github' },
   { label: 'LinkedIn', url: 'https://www.linkedin.com/in/your-handle/', icon: 'linkedin' },
 ],
 ```
 
-`icon` is optional. The homepage uses the GitHub and LinkedIn marks when those values are supplied; any other link uses a generic link icon.
+`icon` is optional. The homepage uses marks for `mail`, `github`, and `linkedin`; any other link uses a generic link icon. Email links use `mailto:` and social links open in a new tab.
 
 Production URLs and the base path are supplied by GitHub Pages during deployment. Local development uses the root path. The repository name does not automatically configure a custom domain or DNS.
 
