@@ -27,10 +27,12 @@ Edit `src/site.config.ts` to set your name, role, introduction, email, descripti
 
 ```ts
 socialLinks: [
-  { label: 'GitHub', url: 'https://github.com/your-handle' },
-  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/your-handle/' },
+  { label: 'GitHub', url: 'https://github.com/your-handle', icon: 'github' },
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/your-handle/', icon: 'linkedin' },
 ],
 ```
+
+`icon` is optional. The homepage uses the GitHub and LinkedIn marks when those values are supplied; any other link uses a generic link icon.
 
 Production URLs and the base path are supplied by GitHub Pages during deployment. Local development uses the root path. The repository name does not automatically configure a custom domain or DNS.
 
