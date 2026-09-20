@@ -3,6 +3,7 @@ title: Simple is a design decision
 description: A few thoughts on choosing the smallest solution that still respects the problem.
 date: 2026-09-10
 category: Engineering
+favoriteOrder: 1
 sample: true
 ---
 

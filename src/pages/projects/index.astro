@@ -5,6 +5,6 @@ import { publishedProjects } from '../../lib/content';
 const projects = await publishedProjects();
 ---
 <BaseLayout title="Projects" description="Selected software projects, experiments, and the thinking behind them.">
-  <section class="page-intro"><h1>Things I’m <em>making.</em></h1><p>A little shelf of projects and experiments, with notes on how they came together.</p></section>
+  <section class="page-intro"><h1>My <em>projects.</em></h1><p>A little shelf of projects and experiments, with notes on how they came together.</p></section>
   <section class="collection-section" aria-label="All projects">{projects.length ? <div class="project-grid">{projects.map(project => <ProjectCard project={project} />)}</div> : <p class="empty-state">Nothing to share here just yet.</p>}</section>
 </BaseLayout>

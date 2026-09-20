@@ -3,6 +3,7 @@ title: Keep a little developer notebook
 description: Small notes that make tomorrow’s debugging session a little easier.
 date: 2026-08-03
 category: Working notes
+favoriteOrder: 3
 sample: true
 ---
 

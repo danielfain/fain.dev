@@ -9,6 +9,7 @@ const posts = defineCollection({
     description: z.string(),
     date: z.coerce.date(),
     category: z.string().default('Notes'),
+    favoriteOrder: z.number().int().positive().optional(),
     draft: z.boolean().default(false),
     sample: z.boolean().default(false),
   }),

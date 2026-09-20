@@ -3,6 +3,7 @@ title: What makes a useful error message?
 description: Treating failure as part of the interface, rather than the end of the conversation.
 date: 2026-08-24
 category: Craft
+favoriteOrder: 2
 sample: true
 ---
 

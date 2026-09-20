@@ -8,7 +8,7 @@ import { site } from '../site.config';
 
 interface Props { title?: string; description?: string; article?: boolean; }
 const { title, description = site.description, article = false } = Astro.props;
-const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.role}`;
+const pageTitle = title ? `${title} — ${site.fullName}` : `${site.fullName} — ${site.role}`;
 const path = Astro.url.pathname;
 const canonical = new URL(path, Astro.site).href;
 const nav = [{ href: '/', label: 'Home' }, { href: '/blog/', label: 'Writing' }, { href: '/projects/', label: 'Projects' }];
@@ -82,8 +82,7 @@ const nav = [{ href: '/', label: 'Home' }, { href: '/blog/', label: 'Writing' },
       </header>
       <main id="main" tabindex="-1"><slot /></main>
       <footer class="site-footer">
-        {site.showExampleNotice && <aside class="example-notice">A work in progress — projects, posts, and contact details are examples for now.</aside>}
-        <div class="footer-bottom"><span>© {new Date().getFullYear()} {site.name}</span><span class="footer-note">Thanks for stopping by.</span><a href="#top" aria-label="Back to top">Back to top <span aria-hidden="true">↑</span></a></div>
+        <div class="footer-bottom"><span>© {new Date().getFullYear()} {site.fullName}</span><a href="#top" aria-label="Back to top">Back to top <span aria-hidden="true">↑</span></a></div>
       </footer>
     </div>
   </body>
